@@ -12,4 +12,4 @@ rm ~/.gitconfig
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 
 rm ~/.p10k.zsh
-ls -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
+ln -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
