@@ -10,3 +10,6 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 
 rm ~/.gitconfig
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+
+rm ~/.p10k.zsh
+ls -a ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
