@@ -16,7 +16,7 @@ sh -c "$(curl -fsSL https://raw.github.com/Semicolon255/dotfiles/master/install.
 ```
 
 ```bash
-$ sh -c "$(wget https://raw.github.com/Semicolon255/dotfiles/master/install.sh -O -)"
+sh -c "$(wget https://raw.github.com/Semicolon255/dotfiles/master/install.sh -O -)"
 ```
 
 (Yes i copied these from oh-my-zsh)
