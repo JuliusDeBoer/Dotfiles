@@ -33,6 +33,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
+    username
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -1559,6 +1560,10 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_username() {
+    p10k segment -f 250 -i $(echo '\uF007') -t "$(whoami)"
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
