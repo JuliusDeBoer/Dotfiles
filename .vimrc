@@ -1,5 +1,4 @@
 set exrc
-set relativenumber
 set number
 set nohlsearch
 set noerrorbells
