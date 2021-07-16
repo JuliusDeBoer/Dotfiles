@@ -44,11 +44,7 @@ if command -v colorls >> /dev/null; then
 	alias ls="colorls"
 fi
 
-if [ -d .git ]; then
-	onefetch
-else
-	neofetch
-fi
+pfetch
 
 echo '\e[1;34m'"Welcome $(whoami)!"'\e[1;37m'
 
