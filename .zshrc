@@ -30,6 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 plugins=(
+	sudo
 	git
 	zsh-syntax-highlighting
 	zsh-autosuggestions
