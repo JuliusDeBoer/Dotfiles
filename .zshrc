@@ -12,6 +12,7 @@ fi
 
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin
+export PATH-$PATH:~/.local/bin
 
 export ZSH="/home/julius/.oh-my-zsh"
 
