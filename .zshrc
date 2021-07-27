@@ -26,12 +26,9 @@ DISABLE_UPDATE_PROMPT="true"
 
 COMPLETION_WAITING_DOTS="true"
 
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
-
 plugins=(
 	git
 	zsh-syntax-highlighting
-	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
