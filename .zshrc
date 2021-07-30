@@ -16,6 +16,8 @@ export PATH=$PATH:~/.local/bin
 
 export ZSH="/home/julius/.oh-my-zsh"
 
+export ZSH_HIGHLIGHT_HIGHLIGHTERS="main brackets pattern cursor"
+
 if [[ -n $DISPLAY ]]; then
 	export ZSH_THEME="powerlevel10k/powerlevel10k"
 else
