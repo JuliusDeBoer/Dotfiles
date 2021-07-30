@@ -33,8 +33,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(zoxide init zsh)"
-
 if command -v colorls >> /dev/null; then
 	alias ls="colorls"
 fi
