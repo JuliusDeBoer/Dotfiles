@@ -5,11 +5,6 @@ if [[ -n $DISPLAY ]] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prom
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [ $(cd ~/.dotfiles && git pull -q | grep "Already up to date." -q) ]; then
-	source ~/.zshrc
-	return
-fi
-
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin
 export PATH=$PATH:~/.local/bin
