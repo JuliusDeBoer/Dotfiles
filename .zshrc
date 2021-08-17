@@ -11,6 +11,8 @@ export PATH=$PATH:~/.local/bin
 
 export ZSH="/home/julius/.oh-my-zsh"
 
+source ~/.aliases
+
 export ZSH_HIGHLIGHT_HIGHLIGHTERS="main brackets pattern cursor"
 
 if [[ -n $DISPLAY ]]; then

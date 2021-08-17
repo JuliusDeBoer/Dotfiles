@@ -19,3 +19,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 echo "Installing .vimrc"
 rm ~/.vimrc
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
+
+echo "Installing .aliases"
+rm ~/.aliases
+ln -s ~/.dotfiles/.aliases ~/.aliases
