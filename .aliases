@@ -1,4 +1,4 @@
 alias sudo="doas"
 alias la="ls -lha"
 alias c="clear"
-alias df="df -a"
+alias df="df -h"
