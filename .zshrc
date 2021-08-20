@@ -32,10 +32,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-if command -v colorls >> /dev/null; then
-	alias ls="colorls"
-fi
-
 pfetch
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
