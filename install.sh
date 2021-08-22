@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Downloadig repo"
-git clone https://github.com/Semicolon255/dotfiles.git ~/dotfiles
+git clone https://github.com/JuliusDeBoer/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 echo "Installing .zshrc"
