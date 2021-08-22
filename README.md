@@ -12,11 +12,11 @@ If you want to install my all of my files i would recommend
 one of the following commands:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.github.com/Semicolon255/dotfiles/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/JuliusDeBoer/dotfiles/master/install.sh)"
 ```
 
 ```bash
-sh -c "$(wget https://raw.github.com/Semicolon255/dotfiles/master/install.sh -O -)"
+sh -c "$(wget https://raw.github.com/JuliusDeBoer/dotfiles/master/install.sh -O -)"
 ```
 
 (Yes i copied these from oh-my-zsh)
