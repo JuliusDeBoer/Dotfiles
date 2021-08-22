@@ -23,5 +23,5 @@ sh -c "$(wget https://raw.github.com/Semicolon255/dotfiles/master/install.sh -O 
 
 You can also just clone the repo yourself using:
 ```bash
-git clone https://github.com/Semicolon255/dotfiles.git ~/.dotfiles
+git clone https://github.com/Semicolon255/dotfiles.git ~/dotfiles
 ```
