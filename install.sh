@@ -1,25 +1,16 @@
 #!/bin/bash
 
-echo "Downloadig repo"
-git clone https://github.com/JuliusDeBoer/dotfiles.git ~/dotfiles
+echo -ne "Downloading repo...\r"
+git clone https://github.com/JuliusDeBoer/dotfiles.git ~/dotfiles >> /dev/null
 cd ~/dotfiles
+echo -ne "Downloading repo... OK\r\n"
 
-echo "Installing .zshrc"
-rm ~/.zshrc
-ln -s ~/dotfiles/.zshrc ~/.zshrc
+files=(".zshrc" ".p10k.zsh" ".gitconfig" ".vimrc" ".aliases")
 
-echo "Installing .p10k.zsh"
-rm ~/.p10k.zsh
-ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
-
-echo "Installing .gitconfig"
-rm ~/.gitconfig
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-
-echo "Installing .vimrc"
-rm ~/.vimrc
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-
-echo "Installing .aliases"
-rm ~/.aliases
-ln -s ~/dotfiles/.aliases ~/.aliases
+for file in ${files[@]}
+do
+	echo -ne "Installing ${file}...\r"
+	rm ~/${file} >> /dev/null
+	ln -s ~/dotfiles/${file} ~/${file}
+	echo -ne "Installing ${file}... OK\r\n"
+done
