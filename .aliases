@@ -1,3 +1,4 @@
-alias la="ls -lha"
-alias c="clear"
-alias df="df -h"
+alias\
+		la="ls -lha"\
+		c="clear"\
+		df="df -h"\
