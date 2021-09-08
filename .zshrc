@@ -13,6 +13,10 @@ export ZSH="/home/julius/.oh-my-zsh"
 
 source ~/.aliases
 
+if [ -f /usr/bin/doas ]; then
+	alias sudo=doas
+fi
+
 export ZSH_HIGHLIGHT_HIGHLIGHTERS="main brackets pattern cursor"
 
 if [[ -n $DISPLAY ]]; then
