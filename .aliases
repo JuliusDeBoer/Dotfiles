@@ -1,4 +1,4 @@
 alias\
-		la="ls -lha"\
-		c="clear"\
-		df="df -h"\
+	la="ls -lha"          \
+	c="clear"             \
+	df="df -h"            \
