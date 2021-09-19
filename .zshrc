@@ -1,15 +1,15 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;    ███████╗███████╗██╗  ██╗██████╗  ██████╗ ;
-;    ╚══███╔╝██╔════╝██║  ██║██╔══██╗██╔════╝ ;
-;      ███╔╝ ███████╗███████║██████╔╝██║      ;
-;     ███╔╝  ╚════██║██╔══██║██╔══██╗██║      ;
-; ██╗███████╗███████║██║  ██║██║  ██║╚██████╗ ;
-; ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; requirements:
-; oh-my-zsh	https://github.com/ohmyzsh/ohmyzsh
-; p10k (oh-my-zsh)	https://github.com/romkatv/powerlevel10k
-; zsh-syntax-highlighting (oh-my-zsh)	https://github.com/zsh-users/zsh-syntax-highlighting.git
+###############################################
+#    ███████╗███████╗██╗  ██╗██████╗  ██████╗ #
+#    ╚══███╔╝██╔════╝██║  ██║██╔══██╗██╔════╝ #
+#      ███╔╝ ███████╗███████║██████╔╝██║      #
+#     ███╔╝  ╚════██║██╔══██║██╔══██╗██║      #
+# ██╗███████╗███████║██║  ██║██║  ██║╚██████╗ #
+# ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ #
+###############################################
+# requirements:
+# oh-my-zsh	https://github.com/ohmyzsh/ohmyzsh
+# p10k (oh-my-zsh)	https://github.com/romkatv/powerlevel10k
+# zsh-syntax-highlighting (oh-my-zsh)	https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 if [[ -n $DISPLAY ]] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
