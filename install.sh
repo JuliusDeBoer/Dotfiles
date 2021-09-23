@@ -1,16 +1,29 @@
 #!/bin/bash
+#############################################################################
+# ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗        ███████╗██╗  ██╗ #
+# ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║        ██╔════╝██║  ██║ #
+# ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║        ███████╗███████║ #
+# ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║        ╚════██║██╔══██║ #
+# ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██╗███████║██║  ██║ #
+# ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝ #
+#############################################################################
+# Create symlinks for dotfiles
 
-echo -ne "Downloading repo...\r"
-git clone https://github.com/JuliusDeBoer/dotfiles.git ~/dotfiles >> /dev/null
-cd ~/dotfiles
-echo -ne "Downloading repo... OK\r\n"
+DIR="$(pwd)"
+BACKUP_DIR="backup"
+FILES=(".zshrc" ".p10k.zsh" ".gitconfig" ".vimrc" ".aliases")
 
-files=(".zshrc" ".p10k.zsh" ".gitconfig" ".vimrc" ".aliases")
+echo "Using backup dir: ${BACKUP_DIR}"
+echo
 
-for file in ${files[@]}
-do
-	echo -ne "Installing ${file}...\r"
-	rm ~/${file} >> /dev/null
-	ln -s ~/dotfiles/${file} ~/${file}
-	echo -ne "Installing ${file}... OK\r\n"
+for FILE in ${FILES[@]}; do
+	echo -ne "${FILE}...\r"
+	if [ -f ${HOME}/${FILE} ]; then
+		mkdir -p "${BACKUP_DIR}"
+		cp -H "${HOME}/${FILE}" "${BACKUP_DIR}/${FILE}"
+	fi
+
+	ln -s -f "${DIR}/${FILE}" "${HOME}/${FILE}"
+	
+	echo -ne "${FILE}: Done!\r\n"
 done
