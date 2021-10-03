@@ -21,13 +21,9 @@ export PATH=$PATH:~/.local/bin
 
 export ZSH="/home/julius/.oh-my-zsh"
 
-source ~/.aliases
-
 if [ -f /usr/bin/doas ]; then
 	alias sudo=doas
 fi
-
-export ZSH_HIGHLIGHT_HIGHLIGHTERS="main brackets pattern cursor"
 
 if [[ -n $DISPLAY ]]; then
 	export ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -36,8 +32,9 @@ else
 fi
 
 DISABLE_UPDATE_PROMPT="true"
-
 COMPLETION_WAITING_DOTS="true"
+export ZSH_HIGHLIGHT_HIGHLIGHTERS="main brackets pattern cursor"
+
 
 plugins=(
 	git
@@ -45,5 +42,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/.aliases
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
