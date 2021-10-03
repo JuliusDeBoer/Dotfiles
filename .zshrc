@@ -15,11 +15,30 @@ if [[ -n $DISPLAY ]] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prom
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [ ! -f ${HOME}/.oh-my-zsh/oh-my-zsh.sh ]; then
+	echo "Installing oh-my-zsh..."
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	echo "Done!"
+fi
+
+if [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ]; then
+	echo "Installing p10k..."
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	echo "Done!"
+fi
+
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ]; then
+	echo "Installing zsh-syntax-highlighting..."
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	echo "Done!"
+fi
+
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin
 export PATH=$PATH:~/.local/bin
 
-export ZSH="/home/julius/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
+
 
 if [ -f /usr/bin/doas ]; then
 	alias sudo=doas
