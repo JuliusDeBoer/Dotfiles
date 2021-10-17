@@ -20,3 +20,4 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=12
+set relativenumber
