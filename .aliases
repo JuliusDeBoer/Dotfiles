@@ -11,3 +11,8 @@ alias\
 	la="ls -lha"          \
 	c="clear"             \
 	df="df -h"            \
+	q="exit"              \
+	py="python"           \
+	gcl="git clone"       \
+	md="mkdir"            \
+	tl="tldr"             \
