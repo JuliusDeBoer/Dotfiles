@@ -8,11 +8,15 @@
 ##########################################################
 
 alias\
-	la="ls -lha"          \
-	c="clear"             \
-	df="df -h"            \
-	q="exit"              \
-	py="python"           \
-	gcl="git clone"       \
-	md="mkdir"            \
-	tl="tldr"             \
+	la="ls -lha"                 \
+	c="clear"                    \
+	df="df -h"                   \
+	q="exit"                     \
+	py="python"                  \
+	gcl="git clone"              \
+	md="mkdir"                   \
+	tl="tldr"                    \
+	dd="dd status=progress"      \
+
+alias\
+	doas="doas "                  \
