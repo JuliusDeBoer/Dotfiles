@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #############################################################################
 # ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗        ███████╗██╗  ██╗ #
 # ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║        ██╔════╝██║  ██║ #
@@ -11,7 +11,7 @@
 
 DIR="$(pwd)"
 BACKUP_DIR="backup"
-FILES=(".zshrc" ".p10k.zsh" ".gitconfig" ".vimrc" ".aliases")
+FILES=(".zshrc" ".gitconfig" ".vimrc" ".aliases")
 
 echo "Using backup dir: ${BACKUP_DIR}"
 echo
@@ -27,3 +27,34 @@ for FILE in ${FILES[@]}; do
 	
 	echo -ne "${FILE}: Done!\r\n"
 done
+
+if [ ! -d "${HOME}/.zsh/zsh-autocomplete" ]; then
+	git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${HOME}/.zsh/zsh-autocomplete
+fi
+
+if [ ! -d "${HOME}/.zsh/zsh-syntax-highlighting" ]; then
+	git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
+fi
+
+if [ ! -d "${HOME}/.zsh/NerdFetch" ]; then
+	git clone --depth 1 https://github.com/ThatOneCalculator/NerdFetch.git ${HOME}/.zsh/NerdFetch
+fi
+
+if [ ! -d "${HOME}/.zsh/spaceship-prompt" ]; then
+	git clone --depth 1 https://github.com/spaceship-prompt/spaceship-prompt.git ${HOME}/.zsh/spaceship-prompt
+fi
+
+if [ ! -f "/usr/bin/zoxide" ]; then
+	echo "Zoxide isnt installed: Installing now..."
+	if [ -f "/usr/bin/pacman" ]; then
+		echo "Pacman found. Installing zoxide with pacman"
+		sudo pacman -S zoxide
+	elif [ -f "/usr/bin/apt" ]; then
+		echo "Apt found. Installing zoxide with apt"
+		sudo apt install zoxide
+	else
+		echo "Installing using curl"
+		curl -sS https://webinstall.dev/zoxide | bash
+	fi
+fi
+
