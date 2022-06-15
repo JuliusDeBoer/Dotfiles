@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 #############################################################################
 # ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗        ███████╗██╗  ██╗ #
 # ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║        ██╔════╝██║  ██║ #
@@ -58,3 +58,7 @@ if [ ! -f "/usr/bin/zoxide" ]; then
 	fi
 fi
 
+if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]; then
+	echo "Installing vim-plug"
+	 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
