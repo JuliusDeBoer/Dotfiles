@@ -8,6 +8,7 @@
 # ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝ #
 #############################################################################
 # Create symlinks for dotfiles
+# And some other stuff
 
 DIR="$(pwd)"
 BACKUP_DIR="backup"
@@ -56,6 +57,15 @@ if [ ! -f "/usr/bin/zoxide" ]; then
 		echo "Installing using curl"
 		curl -sS https://webinstall.dev/zoxide | bash
 	fi
+fi
+
+if [ ! -f "/usr/bin/pfetch" ]; then
+	cd /tmp
+	git clone https://github.com/andreasgrafen/pfetch-with-kitties.git
+	cd pfetch-with-kitties
+	sudo make install
+	cd ..
+	rm -rf pfetch-with-kitties
 fi
 
 if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]; then
