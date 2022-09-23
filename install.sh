@@ -29,10 +29,6 @@ for FILE in ${FILES[@]}; do
 	echo -ne "${FILE}: Done!\r\n"
 done
 
-if [ ! -d "${HOME}/.zsh/zsh-autocomplete" ]; then
-	git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${HOME}/.zsh/zsh-autocomplete
-fi
-
 if [ ! -d "${HOME}/.zsh/zsh-syntax-highlighting" ]; then
 	git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
 fi
