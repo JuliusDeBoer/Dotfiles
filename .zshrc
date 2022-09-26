@@ -39,13 +39,15 @@ SPACESHIP_PROMPT_ORDER=(
 SPACESHIP_USER_SHOW=always
 SPACESHIP_HOST_SHOW=always
 
-eval "$(zoxide init zsh)"
+if command -v zoxide > /dev/null; then
+	eval "$(zoxide init zsh)"
+fi
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey '^H' backward-kill-word
 
-if [ -f "/usr/bin/pfetch" ]; then
+if command -v pfetch > /dev/null; then
 	echo
 	PF_INFO="              \
 		ascii              \

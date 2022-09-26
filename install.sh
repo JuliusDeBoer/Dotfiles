@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #############################################################################
 # ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗        ███████╗██╗  ██╗ #
 # ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║        ██╔════╝██║  ██║ #
@@ -41,12 +41,15 @@ if [ ! -d "${HOME}/.zsh/spaceship-prompt" ]; then
 	git clone --depth 1 https://github.com/spaceship-prompt/spaceship-prompt.git ${HOME}/.zsh/spaceship-prompt
 fi
 
-if [ ! -f "/usr/bin/zoxide" ]; then
+if ! command -v zoxide > /dev/null; then
 	echo "Zoxide isnt installed: Installing now..."
-	if [ -f "/usr/bin/pacman" ]; then
+	if command -v pacman > /dev/null; then
 		echo "Pacman found. Installing zoxide with pacman"
 		sudo pacman -S zoxide
-	elif [ -f "/usr/bin/apt" ]; then
+	elif command -v brew > /dev/null; then
+		echo "Brew found. Installing zoxide using brew"
+		brew install zoxide
+	elif command -v apt > /dev/null; then
 		echo "Apt found. Installing zoxide with apt"
 		sudo apt install zoxide
 	else
@@ -55,13 +58,17 @@ if [ ! -f "/usr/bin/zoxide" ]; then
 	fi
 fi
 
-if [ ! -f "/usr/bin/pfetch" ]; then
-	cd /tmp
-	git clone https://github.com/andreasgrafen/pfetch-with-kitties.git
-	cd pfetch-with-kitties
-	sudo make install
-	cd ..
-	rm -rf pfetch-with-kitties
+if ! command -v pfetch > /dev/null; then
+	if [[ $OSTYPE == 'darwin'* ]] || command -v brew > /dev/null; then
+		brew install pfetch
+	else
+		cd /tmp
+		git clone https://github.com/andreasgrafen/pfetch-with-kitties.git
+		cd pfetch-with-kitties
+		sudo install pfetch /bin
+		cd ..
+		rm -rf pfetch-with-kitties
+	fi
 fi
 
 if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]; then
