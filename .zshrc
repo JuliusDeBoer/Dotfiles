@@ -31,7 +31,7 @@ SPACESHIP_PROMPT_ORDER=(
 	user
 	host
 	dir
-	git docker pyenv
+	git docker
 	line_sep
 	char
 )
