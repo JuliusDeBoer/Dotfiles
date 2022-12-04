@@ -21,23 +21,38 @@ export HISTORY_IGNORE="(ls|la|ll|lsd|
 
 setopt HIST_IGNORE_ALL_DUPS
 
-zstyle ':autocomplete:*' min-input 2
+SPACESHIP_RUST_SYMBOL=" "
+SPACESHIP_CHAR_SYMBOL="λ "
 
-source $ZSH/spaceship-prompt/spaceship.zsh
-source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.aliases
+SPACESHIP_EXEC_TIME_ELAPSED=5
+SPACESHIP_EXEC_TIME_PRECISION=1
 
 SPACESHIP_PROMPT_ORDER=(
 	user
 	host
 	dir
-	git docker
+	gnu_screen
+	java node php
+	dotnet python bun
+	ruby elixir deno swift
+	golang perl rust haskell
+	scala lua dart julia
+	crystal conda vlang ocaml
+	kubectl ansible
+	terraform package
+	docker git hg
 	line_sep
+	exec_time
+	sudo
 	char
 )
 
 SPACESHIP_USER_SHOW=always
 SPACESHIP_HOST_SHOW=always
+
+source $ZSH/spaceship-prompt/spaceship.zsh
+source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.aliases
 
 if command -v zoxide > /dev/null; then
 	eval "$(zoxide init zsh)"
