@@ -1,0 +1,5 @@
+require("core/interface")
+require("core/keymap")
+require("core/statusline")
+require("plugins/plugins")
+require("plugins/lsp")

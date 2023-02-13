@@ -1,1 +1,4 @@
 backup
+nvim/Session.vim
+nvim/plugin
+nvim/lazy-lock.json

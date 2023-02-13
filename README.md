@@ -12,11 +12,6 @@ To install simply clone the repo
 
 ```bash
 git clone https://github.com/Semicolon255/dotfiles.git $HOME/dotfiles
-```
-
-And after that cd into it and run the install script:
-
-```bash
 cd $HOME/dotfiles
 ./install.sh
 ```

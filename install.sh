@@ -1,77 +1,62 @@
 #!/bin/bash
-#############################################################################
-# ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗        ███████╗██╗  ██╗ #
-# ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║        ██╔════╝██║  ██║ #
-# ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║        ███████╗███████║ #
-# ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║        ╚════██║██╔══██║ #
-# ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██╗███████║██║  ██║ #
-# ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═╝ #
-#############################################################################
-# Create symlinks for dotfiles
-# And some other stuff
+##############
+# install.sh #
+##############
 
-DIR="$(pwd)"
-BACKUP_DIR="backup"
-FILES=(".zshrc" ".gitconfig" ".vimrc" ".aliases")
+check() {
+	cmd=$1
+	printf "	\e[1;37m${cmd}\e[0m..."
+	if ! command -v ${cmd} >/dev/null 2>&1; then
+		printf "\e[1;31m✖\e[0\n"
+		printf "\e[1;37m$cmd\e[0m is not installed.\n"
+		exit 1
+	fi
 
-echo "Using backup dir: ${BACKUP_DIR}"
+	printf "\e[1;32m✓\e[0m\n"
+}
+
+clone() {
+	repo=$1
+	destination=$2
+
+	repo_title=$(echo "${repo}" | awk -F/ '{print $NF}' | sed 's/.git$//')
+
+	printf "\t\e[1;33mCloning \e[1;37m${repo_title}\e[0m..."
+	if [ ! -d "$destination" ]; then
+		git clone --depth 1 "$repo" "$destination" &> /dev/null
+	fi
+
+	printf "\e[1;32m✓\e[0m\n"
+}
+
+link() {
+	src=$1
+	dest=$2
+
+	printf "\t\e[1;33mLinking \e[1;37m${src}\e[0m  \e[1;37m${dest}\e[0m\n"
+
+	ln -s -f "${src}" "${dest}"
+}
+
+echo "Checking dependencies"
+check git
+check awk
+check sed
+check printf
 echo
 
-for FILE in ${FILES[@]}; do
-	echo -ne "${FILE}...\r"
-	if [ -f ${HOME}/${FILE} ]; then
-		mkdir -p "${BACKUP_DIR}"
-		cp -H "${HOME}/${FILE}" "${BACKUP_DIR}/${FILE}"
-	fi
+echo "Linking files"
+link $(pwd)/zshrc ${HOME}/.zshrc
+link $(pwd)/gitconfig ${HOME}/.gitconfig
+link $(pwd)/aliases ${HOME}/.aliases
+link $(pwd)/nvim ${HOME}/.config/nvim
+echo
 
-	ln -s -f "${DIR}/${FILE}" "${HOME}/${FILE}"
-	
-	echo -ne "${FILE}: Done!\r\n"
-done
+echo "Cloning repos"
+clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
+clone https://github.com/spaceship-prompt/spaceship-prompt.git ${HOME}/.zsh/spaceship-prompt
 
-if [ ! -d "${HOME}/.zsh/zsh-syntax-highlighting" ]; then
-	git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
-fi
-
-if [ ! -d "${HOME}/.zsh/NerdFetch" ]; then
-	git clone --depth 1 https://github.com/ThatOneCalculator/NerdFetch.git ${HOME}/.zsh/NerdFetch
-fi
-
-if [ ! -d "${HOME}/.zsh/spaceship-prompt" ]; then
-	git clone --depth 1 https://github.com/spaceship-prompt/spaceship-prompt.git ${HOME}/.zsh/spaceship-prompt
-fi
-
-if ! command -v zoxide > /dev/null; then
-	echo "Zoxide isnt installed: Installing now..."
-	if command -v pacman > /dev/null; then
-		echo "Pacman found. Installing zoxide with pacman"
-		sudo pacman -S zoxide
-	elif command -v brew > /dev/null; then
-		echo "Brew found. Installing zoxide using brew"
-		brew install zoxide
-	elif command -v apt > /dev/null; then
-		echo "Apt found. Installing zoxide with apt"
-		sudo apt install zoxide
-	else
-		echo "Installing using curl"
-		curl -sS https://webinstall.dev/zoxide | bash
-	fi
-fi
-
-if ! command -v pfetch > /dev/null; then
-	if [[ $OSTYPE == 'darwin'* ]] || command -v brew > /dev/null; then
-		brew install pfetch
-	else
-		cd /tmp
-		git clone https://github.com/andreasgrafen/pfetch-with-kitties.git
-		cd pfetch-with-kitties
-		sudo install pfetch /bin
-		cd ..
-		rm -rf pfetch-with-kitties
-	fi
-fi
-
-if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]; then
-	echo "Installing vim-plug"
-	 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+# Remove functions
+unset -f check
+unset -f link
+unset -f clone
