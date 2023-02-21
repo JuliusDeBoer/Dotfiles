@@ -2,6 +2,8 @@
 # zshrc #
 #########
 
+path=("${HOME}/.cargo/bin" $path)
+
 if command -v lsd &> /dev/null; then
     alias ls=lsd
 fi
@@ -57,7 +59,7 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey '^H' backward-kill-word
 
-if command -v pfetch > /dev/null; then
+if command -v nitch > /dev/null; then
 	#echo
 	#PF_INFO="              \
 	#	ascii              \

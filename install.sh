@@ -12,7 +12,7 @@ check() {
 		exit 1
 	fi
 
-	printf "\e[1;32m✓\e[0m\n"
+	printf "\e[1;32m✔\e[0m\n"
 }
 
 clone() {
@@ -26,7 +26,7 @@ clone() {
 		git clone --depth 1 "$repo" "$destination" &> /dev/null
 	fi
 
-	printf "\e[1;32m✓\e[0m\n"
+	printf "\e[1;32m✔\e[0m\n"
 }
 
 link() {
