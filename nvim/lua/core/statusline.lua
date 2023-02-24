@@ -3,6 +3,9 @@
 -- Credit: glepnir
 
 -- Edited by me
+
+require("plugins/plugins")
+
 local lualine = require('lualine')
 
 -- Color table for highlights
