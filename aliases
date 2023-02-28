@@ -3,7 +3,7 @@
 # aliases #
 ###########
 
-alias\
+alias \
 	la="ls -lha"                 \
 	c="clear"                    \
 	df="df -h"                   \

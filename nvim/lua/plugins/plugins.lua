@@ -12,12 +12,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "folke/which-key.nvim", lazy=false },
+	{
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+	},
 	"nvim-tree/nvim-web-devicons",
 	{
 		"catppuccin/nvim",
-		name="catppuccin",
-		opts={ flavour="mocha" }
+		name="catppuccin"
 	},
 	{
 		"goolord/alpha-nvim", dependencies={ "nvim-tree/nvim-web-devicons" },
@@ -54,12 +59,20 @@ require("lazy").setup({
 	"mklabs/mdn.vim",
 	"nvim-treesitter/completion-treesitter",
 	"dominikduda/vim_current_word",
+	"folke/trouble.nvim",
 	{
 		"SmiteshP/nvim-navic",
 		dependencies = { { "neovim/nvim-lspconfig" } },
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		version = "<CurrentMajor>.*",
+		version = "1.*",
+	},
+	{
+		"folke/noice.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify"
+		}
 	}
 })
