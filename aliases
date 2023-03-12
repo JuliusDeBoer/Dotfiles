@@ -12,7 +12,10 @@ alias \
 	gcl="git clone"              \
 	md="mkdir"                   \
 	tl="tldr"                    \
-	dd="dd status=progress"      \
+	dd="dd status=progress"
 
-alias\
-	doas="doas "                  \
+if command -v exa &> /dev/null; then
+    alias \
+		ls="exa"                 \
+		tree="exa --tree"
+fi

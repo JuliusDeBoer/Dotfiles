@@ -29,7 +29,7 @@ require'lspconfig'.jdtls.setup{config}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.rust_analyzer.setup{}
 -- require'lspconfig'.denols.setup{}
--- require'lspconfig'.phpactor.setup{}
+require'lspconfig'.phpactor.setup{}
 -- require'lspconfig'.cssls.setup{}
 -- require'lspconfig'.eslint.setup{}
 require'lspconfig'.emmet_ls.setup{}

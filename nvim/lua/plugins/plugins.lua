@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
@@ -19,16 +19,12 @@ require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 	},
-	"nvim-tree/nvim-web-devicons",
+	{
+		"nvim-tree/nvim-web-devicons"
+	},
 	{
 		"catppuccin/nvim",
 		name="catppuccin"
-	},
-	{
-		"goolord/alpha-nvim", dependencies={ "nvim-tree/nvim-web-devicons" },
-    	config = function ()
-			require'alpha'.setup(require'alpha.themes.startify'.config)
-    	end
 	},
 	{
 		"nvim-telescope/telescope.nvim", 
@@ -44,33 +40,91 @@ require("lazy").setup({
 		},
 		lazy=false
 	},
-	"haorenW1025/completion-nvim",
-	"nvim-treesitter/nvim-treesitter",
-	{"nvim-lualine/lualine.nvim", dependencies={"nvim-tree/nvim-web-devicons"}},
-	{ "windwp/nvim-autopairs", config=function() require("nvim-autopairs").setup {} end },
-	{"lalitmee/browse.nvim", dependencies="nvim-telescope/telescope.nvim"},
-	{ "numToStr/Comment.nvim", config =function() require('Comment').setup() end },
-	"neovim/nvim-lspconfig",
-	"xiyaowong/virtcolumn.nvim",
-	"windwp/nvim-ts-autotag",
-	"lukas-reineke/indent-blankline.nvim",
-	"nvim-lua/plenary.nvim",
-	"mfussenegger/nvim-jdtls",
-	"mklabs/mdn.vim",
-	"nvim-treesitter/completion-treesitter",
-	"dominikduda/vim_current_word",
-	"folke/trouble.nvim",
+	{
+		"haorenW1025/completion-nvim"
+	},
+	{
+		"nvim-treesitter/nvim-treesitter"
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies={
+			"nvim-tree/nvim-web-devicons"
+		}
+	},
+	{
+		"windwp/nvim-autopairs",
+		config=function()
+			require("nvim-autopairs").setup{}
+		end 
+	},
+	{
+		"lalitmee/browse.nvim", dependencies="nvim-telescope/telescope.nvim"
+	},
+	{
+		"numToStr/Comment.nvim",
+		config=function()
+			require('Comment').setup()
+		end 
+	},
+	{
+		"neovim/nvim-lspconfig"
+	},
+	{
+		"xiyaowong/virtcolumn.nvim"
+	},
+	{
+		"windwp/nvim-ts-autotag"
+	},
+	{
+		"ggandor/lightspeed.nvim"
+	},
+	{
+		"lambdalisue/fern.vim"
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim"
+	},
+	{
+		"nvim-lua/plenary.nvim"
+	},
+	{
+		"mfussenegger/nvim-jdtls"
+	},
+	{
+		"mklabs/mdn.vim"
+	},
+	{
+		"nvim-treesitter/completion-treesitter"
+	},
+	{
+		"dominikduda/vim_current_word"
+	},
+	{
+		"folke/trouble.nvim"
+	},
+	{
+		"tpope/vim-surround"
+	},
+	{
+		"ThePrimeagen/harpoon",
+		dependencies={
+			"nvim-lua/plenary.nvim"
+		}
+	},
 	{
 		"SmiteshP/nvim-navic",
-		dependencies = { { "neovim/nvim-lspconfig" } },
+		dependencies={
+			"neovim/nvim-lspconfig"
+		}
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		version = "1.*",
+		version = "1.*"
 	},
 	{
 		"folke/noice.nvim",
-		dependencies = {
+		dependencies={
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify"
 		}

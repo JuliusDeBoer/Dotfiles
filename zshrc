@@ -4,10 +4,6 @@
 
 path=("${HOME}/.cargo/bin" $path)
 
-if command -v lsd &> /dev/null; then
-    alias ls=lsd
-fi
-
 export ZSH=$HOME/.zsh
 export HISTFILE=$ZSH/zsh_history
 export HISTSIZE=10000
@@ -60,20 +56,5 @@ bindkey "^[[1;5D" backward-word
 bindkey '^H' backward-kill-word
 
 if command -v nitch > /dev/null; then
-	#echo
-	#PF_INFO="              \
-	#	ascii              \
-	#	title              \
-	#	os                 \
-	#	host               \
-	#	uptime             \
-	#"                      \
-	#PF_COLOR=1             \
-	#PF_COL1=4              \
-	#PF_COL2=9              \
-	#PF_COL3=1              \
-	#PF_ASCII="Catppuccin"  \
-    #                       \
-	#pfetch
 	nitch
 fi

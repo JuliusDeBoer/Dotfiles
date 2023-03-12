@@ -9,7 +9,8 @@ require("catppuccin").setup({
 		noice = true,
 		markdown = true,
 		treesitter = true,
-		which_key = true
+		which_key = true,
+		dashboard = true
     }
 })
 
