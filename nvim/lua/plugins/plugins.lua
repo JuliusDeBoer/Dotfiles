@@ -34,9 +34,10 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		dependencies={
 			"hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-			'hrsh7th/cmp-nvim-lua',
-			'octaltree/cmp-look', 'hrsh7th/cmp-path', 'hrsh7th/cmp-calc',
-			'f3fora/cmp-spell', 'hrsh7th/cmp-emoji'
+			'hrsh7th/cmp-nvim-lua', 'saadparwaiz1/cmp_luasnip', 
+			'saadparwaiz1/cmp_luasnip', 'octaltree/cmp-look',
+			'hrsh7th/cmp-path', 'hrsh7th/cmp-calc', 'f3fora/cmp-spell',
+			'hrsh7th/cmp-emoji'
 		},
 		lazy=false
 	},
@@ -107,6 +108,14 @@ require("lazy").setup({
 		"tpope/vim-surround"
 	},
 	{
+   		"glepnir/lspsaga.nvim",
+   		event = "BufRead",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"nvim-treesitter/nvim-treesitter"
+		}
+	},
+	{
 		"ThePrimeagen/harpoon",
 		dependencies={
 			"nvim-lua/plenary.nvim"
@@ -127,6 +136,34 @@ require("lazy").setup({
 		dependencies={
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify"
+		}
+	},
+	{
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v1.x',
+		dependencies = {
+			-- LSP Support
+			{'neovim/nvim-lspconfig'},             -- Required
+			{'williamboman/mason.nvim'},           -- Optional
+			{'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+			-- Autocompletion
+			{'hrsh7th/nvim-cmp'},         -- Required
+			{'hrsh7th/cmp-nvim-lsp'},     -- Required
+			{'hrsh7th/cmp-buffer'},       -- Optional
+			{'hrsh7th/cmp-path'},         -- Optional
+			{'saadparwaiz1/cmp_luasnip'}, -- Optional
+			{'hrsh7th/cmp-nvim-lua'},     -- Optional
+	
+			-- Snippets
+			{'L3MON4D3/LuaSnip'},             -- Required
+			{'rafamadriz/friendly-snippets'}, -- Optional
+		}
+	},
+	{
+		"TimUntersberger/neogit",
+		dependencies = {
+			{'nvim-lua/plenary.nvim'}
 		}
 	}
 })

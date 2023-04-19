@@ -14,6 +14,12 @@ require("catppuccin").setup({
     }
 })
 
+require("lspsaga").setup {
+	ui = {
+		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+	}
+}
+
 compile_path = vim.fn.stdpath "cache" .. "/catppuccin"
 
 vim.cmd.colorscheme "catppuccin"

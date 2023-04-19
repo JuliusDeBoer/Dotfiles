@@ -51,6 +51,10 @@ if command -v zoxide > /dev/null; then
 	eval "$(zoxide init zsh)"
 fi
 
+if command -v nvim > /dev/null; then
+	export EDITOR=$(which nvim)
+fi
+
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey '^H' backward-kill-word

@@ -11,30 +11,48 @@ vim.g.markdown_fenced_languages = {
 	"ts=typescript"
 }
 
-local config = {
-  cmd = {
-    "jdtls",
-    "-configuration",
-    "$HOME/.cache/jdtls/config",
-    "-data",
-    "-Dlog.protocol=true",
-    "$HOME/.cache/jdtls/workspace",
-    --增加lombok插件支持，getter setter good bye
-    "-javaagent:/usr/lib/lombok-common/lombok.jar",
-  }
-}
+-- local lsp = require('lsp-zero').preset({
+-- 	name = 'minimal',
+-- 	set_lsp_keymaps = true,
+-- 	manage_nvim_cmp = true,
+-- 	suggest_lsp_servers = false,
+-- })
 
--- require'lspconfig'.java_language_server.setup{ cmd = {"/usr/share/java/java-language-server/lang_server_linux.sh"} }
-require'lspconfig'.jdtls.setup{config}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.rust_analyzer.setup{}
--- require'lspconfig'.denols.setup{}
-require'lspconfig'.phpactor.setup{}
--- require'lspconfig'.cssls.setup{}
--- require'lspconfig'.eslint.setup{}
-require'lspconfig'.emmet_ls.setup{}
+local lsp = require('lsp-zero');
 
-require'nvim-ts-autotag'.setup{}
+lsp.preset('recommended')
+
+lsp.setup()
+
+-- (Optional) Configure lua language server for neovim
+lsp.nvim_workspace()
+
+lsp.setup()
+
+-- local config = {
+--   cmd = {
+--     "jdtls",
+--     "-configuration",
+--     "$HOME/.cache/jdtls/config",
+--     "-data",
+--     "-Dlog.protocol=true",
+--     "$HOME/.cache/jdtls/workspace",
+--     --增加lombok插件支持，getter setter good bye
+--     "-javaagent:/usr/lib/lombok-common/lombok.jar",
+--   }
+-- }
+--
+-- -- require'lspconfig'.java_language_server.setup{ cmd = {"/usr/share/java/java-language-server/lang_server_linux.sh"} }
+-- require'lspconfig'.jdtls.setup{config}
+-- require'lspconfig'.clangd.setup{}
+-- require'lspconfig'.rust_analyzer.setup{}
+-- -- require'lspconfig'.denols.setup{}
+-- require'lspconfig'.phpactor.setup{}
+-- -- require'lspconfig'.cssls.setup{}
+-- -- require'lspconfig'.eslint.setup{}
+-- require'lspconfig'.emmet_ls.setup{}
+--
+-- require'nvim-ts-autotag'.setup{}
 
 --[[
 	highlight! DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
@@ -48,10 +66,10 @@ vim.cmd [[
 	sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
 	sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
 ]]
-
-require'lspconfig'.html.setup {
-  capabilities = capabilities,
-}
+--
+-- require'lspconfig'.html.setup {
+--   capabilities = capabilities,
+-- }
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
