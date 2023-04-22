@@ -55,6 +55,7 @@ echo
 echo "Cloning repos"
 clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
 clone https://github.com/spaceship-prompt/spaceship-prompt.git ${HOME}/.zsh/spaceship-prompt
+clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting-catppuccin
 
 # Remove functions
 unset -f check

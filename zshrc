@@ -43,6 +43,7 @@ SPACESHIP_PROMPT_ORDER=(
 SPACESHIP_USER_SHOW=always
 SPACESHIP_HOST_SHOW=always
 
+source $ZSH/zsh-syntax-highlighting-catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source $ZSH/spaceship-prompt/spaceship.zsh
 source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.aliases
