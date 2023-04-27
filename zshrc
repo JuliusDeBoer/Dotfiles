@@ -25,18 +25,11 @@ SPACESHIP_PROMPT_ORDER=(
 	user
 	host
 	dir
-	gnu_screen
-	java node php
-	dotnet python bun
-	ruby elixir deno swift
-	golang perl rust haskell
-	scala lua dart julia
-	crystal conda vlang ocaml
-	kubectl ansible
-	terraform package
-	docker git hg
+	node
+	rust
+	package
+	docker git
 	line_sep
-	sudo
 	char
 )
 
