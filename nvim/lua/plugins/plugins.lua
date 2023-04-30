@@ -48,12 +48,6 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter"
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		dependencies={
-			"nvim-tree/nvim-web-devicons"
-		}
-	},
-	{
 		"windwp/nvim-autopairs",
 		config=function()
 			require("nvim-autopairs").setup{}
@@ -165,5 +159,13 @@ require("lazy").setup({
 		dependencies = {
 			{'nvim-lua/plenary.nvim'}
 		}
+	},
+	{
+		"itchyny/lightline.vim",
+		config=function ()
+			vim.g.lightline = {
+				colorscheme = 'catppuccin'
+			}
+		end
 	}
 })

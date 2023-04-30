@@ -5,8 +5,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- 	capabilities = capabilities,
 -- }
 
-require('lualine').setup()
-
 vim.g.markdown_fenced_languages = {
 	"ts=typescript"
 }
