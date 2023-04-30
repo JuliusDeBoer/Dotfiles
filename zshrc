@@ -14,30 +14,9 @@ export HISTORY_IGNORE="(ls|la|ll|lsd|
 
 setopt HIST_IGNORE_ALL_DUPS
 
-SPACESHIP_RUST_SYMBOL=" "
-SPACESHIP_DOCKER_SYMBOL=" "
-SPACESHIP_CHAR_SYMBOL="λ "
-
-SPACESHIP_EXEC_TIME_ELAPSED=5
-SPACESHIP_EXEC_TIME_PRECISION=1
-
-SPACESHIP_PROMPT_ORDER=(
-	user
-	host
-	dir
-	node
-	rust
-	package
-	docker git
-	line_sep
-	char
-)
-
-SPACESHIP_USER_SHOW=always
-SPACESHIP_HOST_SHOW=always
+eval "$(starship init zsh)"
 
 source $ZSH/zsh-syntax-highlighting-catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-source $ZSH/spaceship-prompt/spaceship.zsh
 source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.aliases
 

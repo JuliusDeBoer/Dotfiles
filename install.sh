@@ -38,11 +38,20 @@ link() {
 	ln -s -f "${src}" "${dest}"
 }
 
+install_cargo() {
+	package=$1
+
+	printf "\t\e[1;33mInstalling \e[1;37m${package}\e[0m with \e[1;37mcargo\e[0m..."
+	cargo install "${package}" &> /dev/null
+	printf "\e[1;32m✔\e[0m\n"
+}
+
 echo "Checking dependencies"
 check git
 check awk
 check sed
 check printf
+check cargo
 echo
 
 echo "Linking files"
@@ -50,12 +59,16 @@ link $(pwd)/zshrc ${HOME}/.zshrc
 link $(pwd)/gitconfig ${HOME}/.gitconfig
 link $(pwd)/aliases ${HOME}/.aliases
 link $(pwd)/nvim ${HOME}/.config/nvim
+link $(pwd)/starship.toml ${HOME}/.config/starship.toml
 echo
 
 echo "Cloning repos"
 clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
-clone https://github.com/spaceship-prompt/spaceship-prompt.git ${HOME}/.zsh/spaceship-prompt
 clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting-catppuccin
+echo
+
+echo "Installing aditional packages (this might take a while)"
+install_cargo starship
 
 # Remove functions
 unset -f check
