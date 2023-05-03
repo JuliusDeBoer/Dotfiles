@@ -156,6 +156,9 @@ show_always = true
 style_user = "yellow bold"
 style_root = "red bold"
 
+[cmd_duration]
+disabled = true
+
 [rust]
 symbol = " "
 style = "bold maroon"
