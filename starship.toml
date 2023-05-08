@@ -32,7 +32,7 @@ error_symbol = "[λ](bold red)"
 truncation_length = 4
 truncate_to_repo = true
 style = "sapphire bold"
-read_only = " "
+read_only = " "
 
 [docker_context]
 symbol = " "
@@ -72,13 +72,13 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = " "
 
 [meson]
-symbol = "喝 "
+symbol = "󰔷 "
 
 [nim]
-symbol = " "
+symbol = " "
 
 [nix_shell]
 symbol = " "
@@ -104,8 +104,8 @@ Fedora = " "
 FreeBSD = " "
 Garuda = "﯑ "
 Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
+HardenedBSD = " "
+Illumos = " "
 Linux = " "
 Mabox = " "
 Macos = " "
@@ -123,24 +123,24 @@ Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
 Redox = " "
-Solus = "ﴱ "
+Solus = " "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "󰨡 "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 style = "lavender bold"
 
 [pijul_channel]
-symbol = "🪺 "
+disabled = true
 
 [python]
 symbol = " "
 
 [rlang]
-symbol = "ﳒ "
+symbol = "R "
 
 [ruby]
 symbol = " "
