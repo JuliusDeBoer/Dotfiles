@@ -59,6 +59,9 @@ symbol = " "
 [haxe]
 symbol = "⌘ "
 
+[php]
+symbol = "󰌟 "
+
 [hg_branch]
 symbol = " "
 
@@ -140,7 +143,7 @@ disabled = true
 symbol = " "
 
 [rlang]
-symbol = "R "
+symbol = "󰟔 "
 
 [ruby]
 symbol = " "
