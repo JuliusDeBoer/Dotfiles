@@ -167,5 +167,11 @@ require("lazy").setup({
 				colorscheme = 'catppuccin'
 			}
 		end
+	},
+	{
+		'stevearc/oil.nvim',
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	}
 })
