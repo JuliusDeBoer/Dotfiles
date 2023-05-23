@@ -68,9 +68,9 @@ require("lazy").setup({
 	{
 		"xiyaowong/virtcolumn.nvim"
 	},
-	{
-		"windwp/nvim-ts-autotag"
-	},
+	-- {
+	-- 	"windwp/nvim-ts-autotag"
+	-- },
 	{
 		"ggandor/lightspeed.nvim"
 	},
@@ -169,9 +169,19 @@ require("lazy").setup({
 		end
 	},
 	{
-		'stevearc/oil.nvim',
+		"stevearc/oil.nvim",
 		opts = {},
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = { "nvim-lua/plenary.nvim"},
+		config = function ()
+			require("gitsigns").setup()
+		end
+	},
+	{
+		"tpope/vim-fugitive"
 	}
 })
