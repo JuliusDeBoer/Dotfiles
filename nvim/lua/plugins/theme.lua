@@ -1,17 +1,18 @@
 require("plugins/plugins")
 
 require("catppuccin").setup({
-    flavour = "mocha",
-    integrations = {
-        cmp = true,
-        telescope = true,
-        notify = true,
+	flavour = "mocha",
+	integrations = {
+  	cmp = true,
+		telescope = true,
+		notify = true,
 		noice = true,
 		markdown = true,
 		treesitter = true,
 		which_key = true,
-		dashboard = true
-    }
+		dashboard = true,
+		mason = true
+  }
 })
 
 require("lspsaga").setup {
