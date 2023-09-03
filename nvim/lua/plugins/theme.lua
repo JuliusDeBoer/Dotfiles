@@ -12,7 +12,9 @@ require("catppuccin").setup({
 		which_key = true,
 		dashboard = true,
 		mason = true
-  }
+  },
+
+	compile_path = vim.fn.stdpath "cache" .. "/catppuccin"
 })
 
 require("lspsaga").setup {
@@ -21,6 +23,5 @@ require("lspsaga").setup {
 	}
 }
 
-compile_path = vim.fn.stdpath "cache" .. "/catppuccin"
 
 vim.cmd.colorscheme "catppuccin"

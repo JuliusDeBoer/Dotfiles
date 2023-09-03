@@ -27,14 +27,14 @@ require("lazy").setup({
 		name="catppuccin"
 	},
 	{
-		"nvim-telescope/telescope.nvim", 
+		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies={
 			"hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-			'hrsh7th/cmp-nvim-lua', 'saadparwaiz1/cmp_luasnip', 
+			'hrsh7th/cmp-nvim-lua', 'saadparwaiz1/cmp_luasnip',
 			'saadparwaiz1/cmp_luasnip', 'octaltree/cmp-look',
 			'hrsh7th/cmp-path', 'hrsh7th/cmp-calc', 'f3fora/cmp-spell',
 			'hrsh7th/cmp-emoji'
@@ -48,10 +48,10 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter"
 	},
 	{
-		"windwp/nvim-autopairs",
-		config=function()
-			require("nvim-autopairs").setup{}
-		end 
+		"altermo/ultimate-autopair.nvim",
+		event={'InsertEnter','CmdlineEnter'},
+		branch='v0.6',
+		opts={ }
 	},
 	{
 		"lalitmee/browse.nvim", dependencies="nvim-telescope/telescope.nvim"
@@ -60,7 +60,7 @@ require("lazy").setup({
 		"numToStr/Comment.nvim",
 		config=function()
 			require('Comment').setup()
-		end 
+		end
 	},
 	{
 		"neovim/nvim-lspconfig"
@@ -102,8 +102,8 @@ require("lazy").setup({
 		"tpope/vim-surround"
 	},
 	{
-   		"glepnir/lspsaga.nvim",
-   		event = "BufRead",
+		"glepnir/lspsaga.nvim",
+		event = "BufRead",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"nvim-treesitter/nvim-treesitter"
@@ -148,7 +148,7 @@ require("lazy").setup({
 			{'hrsh7th/cmp-path'},         -- Optional
 			{'saadparwaiz1/cmp_luasnip'}, -- Optional
 			{'hrsh7th/cmp-nvim-lua'},     -- Optional
-	
+
 			-- Snippets
 			{'L3MON4D3/LuaSnip'},             -- Required
 			{'rafamadriz/friendly-snippets'}, -- Optional
@@ -191,5 +191,29 @@ require("lazy").setup({
 		config = function()
 			require("nvim-surround").setup({})
 		end
+	},
+	{
+		"stevearc/overseer.nvim",
+		commit = "3047ede61cc1308069ad1184c0d447ebee92d749", -- Recommended to to avoid breaking changes
+		cmd = {"CompilerOpen", "CompilerToggleResults"},
+		opts = {
+			task_list = {
+				direction = "bottom",
+				min_height = 25,
+				max_height = 25,
+				default_detail = 1,
+				bindings = {
+					["q"] = function() vim.cmd("OverseerClose") end ,
+				}
+			}
+		}
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = { }
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context"
 	}
-})
+});
