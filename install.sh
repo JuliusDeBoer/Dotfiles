@@ -74,3 +74,4 @@ install_cargo starship
 unset -f check
 unset -f link
 unset -f clone
+unset -f install_cargo
