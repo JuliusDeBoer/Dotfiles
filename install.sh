@@ -60,11 +60,16 @@ link $(pwd)/gitconfig ${HOME}/.gitconfig
 link $(pwd)/aliases ${HOME}/.aliases
 link $(pwd)/nvim ${HOME}/.config/nvim
 link $(pwd)/starship.toml ${HOME}/.config/starship.toml
+link $(pwd)/tmux.conf ${HOME}/.tmux.conf
 echo
 
 echo "Cloning repos"
-clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting
+# ZSH
+clone https://github.com/zsh-users/zsh-syntax-highlighting.git  ${HOME}/.zsh/zsh-syntax-highlighting
 clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting-catppuccin
+clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting-catppuccin
+# TPM
+clone https://github.com/tmux-plugins/tpm                       ${HOME}/.tmux/plugins/tpm
 echo
 
 echo "Installing aditional packages (this might take a while)"

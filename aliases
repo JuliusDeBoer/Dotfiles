@@ -12,7 +12,8 @@ alias \
 	gcl="git clone"              \
 	md="mkdir"                   \
 	tl="tldr"                    \
-	dd="dd status=progress"
+	dd="dd status=progress"      \
+	tmux="tmux -2 -u"
 
 if command -v exa &> /dev/null; then
     alias \
