@@ -1,15 +1,10 @@
-require("plugins/plugins")
-
-local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
-
-local telescope = require("telescope")
-
-telescope.setup {
-  defaults = {
-    mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
-      n = { ["<c-t>"] = trouble.open_with_trouble },
-    },
-  },
+return {
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "<leader>ff", "<cmd>Telescope find_files<cr>" },
+			{ "<leader>lg", "<cmd>Telescope live_grep<cr>" },
+		},
+	},
 }
