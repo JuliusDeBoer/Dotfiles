@@ -33,9 +33,9 @@ link() {
 	src=$1
 	dest=$2
 
-	printf "\t\e[1;33mLinking \e[1;37m${src}\e[0m  \e[1;37m${dest}\e[0m\n"
+	printf "\t\e[1;33mLinking \e[1;37m${src}\e[0m → \e[1;37m${dest}\e[0m\n"
 
-	ln -s -f "${src}" "${dest}"
+	ln -sfn "${src}" "${dest}"
 }
 
 install_cargo() {
@@ -66,7 +66,6 @@ echo
 echo "Cloning repos"
 # ZSH
 clone https://github.com/zsh-users/zsh-syntax-highlighting.git  ${HOME}/.zsh/zsh-syntax-highlighting
-clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting-catppuccin
 clone https://github.com/catppuccin/zsh-syntax-highlighting.git ${HOME}/.zsh/zsh-syntax-highlighting-catppuccin
 # TPM
 clone https://github.com/tmux-plugins/tpm                       ${HOME}/.tmux/plugins/tpm
