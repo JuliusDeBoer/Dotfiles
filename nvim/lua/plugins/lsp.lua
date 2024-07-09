@@ -16,11 +16,13 @@ return {
 			"mfussenegger/nvim-lint",
 
 			-- Formatter
-			"mhartington/formatter.nvim",
+			"nvimtools/none-ls.nvim",
 		},
 		config = function()
 			require("mason").setup()
-			require("mason-lspconfig").setup()
+			require("mason-lspconfig").setup({
+				inlay_hints = { enabled = true },
+			})
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
@@ -30,6 +32,9 @@ return {
 				end,
 			})
 		end,
+	},
+	{
+		"nvimtools/none-ls.nvim",
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -44,15 +49,6 @@ return {
 			"dcampos/nvim-snippy",
 			"dcampos/cmp-snippy",
 			"onsails/lspkind.nvim",
-		},
-		keys = {
-			{
-				"<leader>rn",
-				function()
-					vim.lsp.buf.rename()
-				end,
-				desc = "Rename symbol",
-			},
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -112,5 +108,35 @@ return {
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 			end
 		end,
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		opts = {
+			lightbulb = {
+				enable = false,
+			},
+			symbol_in_winbar = {
+				enable = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>rn",
+				"<cmd>Lspsaga rename<cr>",
+				desc = "Rename symbol",
+			},
+			{
+				"<leader>ca",
+				"<cmd>Lspsaga code_action<cr>",
+				desc = "Code action",
+			},
+		},
+		cmd = {
+			"Lspsaga",
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 }

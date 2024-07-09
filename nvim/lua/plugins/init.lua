@@ -2,10 +2,6 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 1000
-		end,
 		opts = {},
 	},
 	{
@@ -37,7 +33,7 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			vim.api.nvim_set_hl(0, "CurrentWord", { bold = true, underline = true })
-			vim.api.nvim_set_hl(0, "CurrentWordTwins", { bold = true })
+			vim.api.nvim_set_hl(0, "CurrentWordTwins", { underline = true })
 		end,
 	},
 	{
@@ -50,9 +46,9 @@ return {
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("gitsigns").setup()
-		end,
+		opts = {
+			current_line_blame = true,
+		},
 	},
 	{
 		"NeogitOrg/neogit",
@@ -71,7 +67,7 @@ return {
 			{ "<leader>ng", "<cmd>Neogit<cr>", desc = "Open Neogit" },
 		},
 	},
-	{
+	--[[ {
 		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -94,6 +90,14 @@ return {
 			window = {
 				hijack_netrw_behavior = "open_current",
 			},
+		},
+	}, ]]
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "<leader>nc", "<cmd>Oil<cr>", desc = "Open Oil.nvim in current buffer" },
 		},
 	},
 	{
@@ -129,5 +133,28 @@ return {
 				},
 			})
 		end,
+	},
+	{ -- This plugin
+		"Zeioth/compiler.nvim",
+		cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+		dependencies = { "stevearc/overseer.nvim" },
+		opts = {},
+	},
+	{ -- The task runner we use
+		"stevearc/overseer.nvim",
+		commit = "400e762648b70397d0d315e5acaf0ff3597f2d8b",
+		cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+		opts = {
+			task_list = {
+				direction = "bottom",
+				min_height = 25,
+				max_height = 25,
+				default_detail = 1,
+			},
+		},
+	},
+	{
+		"EmranMR/tree-sitter-blade",
+		lazy = false
 	},
 }
