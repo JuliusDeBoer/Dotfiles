@@ -1,6 +1,7 @@
 [user]
 	name = Julius de Boer
 	email = 45075461+JuliusDeBoer@users.noreply.github.com
+	signingkey = 04491B6E0B95C939
 
 [init]
 	defaultBranch = master
@@ -12,3 +13,15 @@
 	interactive = auto
 	ui = true
 	pager = true
+
+[commit]
+	gpgsign = true
+
+[rerere]
+	enabled = true
+
+[branch]
+	sort = -committerdate
+
+[pull]
+	ff = only
