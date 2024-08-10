@@ -82,6 +82,17 @@
       EDITOR = "nvim";
     };
 
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        cursor-size = 24;
+        enable-hot-corners = false;
+        font-name = "Geist 10";
+        show-battery-percentage = true;
+        toolbar-style = "text";
+      };
+    };
+
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -146,10 +157,12 @@
     bat
     gnupg
     pinentry-curses
+    geist-font
   ];
 
   programs.gnupg.agent = {
     enable = true;
+    # TODO: Dont use curses
     pinentryPackage = pkgs.pinentry-curses;
   };
 
