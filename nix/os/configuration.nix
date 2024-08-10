@@ -35,11 +35,6 @@
 
   services.pcscd.enable = true;
 
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  # };
-  # services.desktopManager.plasma6.enable = true;
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
@@ -55,21 +50,88 @@
     pulse.enable = true;
   };
 
+  programs.zsh.enable = true;
+
   users.users.julius = {
     isNormalUser = true;
     description = "Julius";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      wezterm
-      zed-editor
-      vesktop
-      gimp
-      geist-font
-      gitoxide
-      pnpm
-      nodejs_22
+    packages = [
+      pkgs.zsh
     ];
+    # programs.zsh.enable = true;
+    shell = pkgs.zsh;
+  };
+
+  home-manager.users.julius = { pkgs, ... }: {
+    home.stateVersion = "24.05";
+
+    home.packages = [
+      pkgs.tlrc
+      pkgs.openssh
+      pkgs.neovim
+      pkgs.firefox
+      pkgs.zed-editor
+      pkgs.vesktop
+      pkgs.rustup
+      pkgs.pnpm
+      pkgs.nodejs
+    ];
+
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
+
+    programs.zsh = {
+      enable = true;
+      autosuggestion.enable = true;
+      enableCompletion = true;
+    };
+
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.git = {
+      enable = true;
+      userName = "Julius de Boer";
+      userEmail = "45075461+JuliusDeBoer@users.noreply.github.com";
+      signing = {
+        key = "04491B6E0B95C939";
+        signByDefault = true;
+      };
+      extraConfig = {
+        init.defaultBranch = "master";
+        color = {
+          diff = "auto";
+          status = "auto";
+          branch = "auto";
+          interactive = "auto";
+          ui = true;
+          pager = true;
+        };
+        rerere.enabled = true;
+        branch.sort = "-committerdate";
+        pull.ff = "only";
+      };
+    };
+
+    programs.wezterm = {
+      enable = true;
+      enableBashIntegration = false;
+      enableZshIntegration = true;
+      extraConfig = ''
+        local wezterm = require 'wezterm'
+        local config = wezterm.config_builder()
+
+        config.color_scheme = 'Tokyo Night'
+
+        config.enable_tab_bar = false
+
+        return config
+      '';
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
