@@ -91,6 +91,9 @@
         show-battery-percentage = true;
         toolbar-style = "text";
       };
+      "org/gnome/shell" = {
+        favorite-app = [];
+      };
     };
 
     programs.zsh = {
