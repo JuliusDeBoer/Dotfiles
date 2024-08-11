@@ -10,13 +10,23 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
+  outputs = { self, nixpkgs, ... }@inputs :
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+      };
+      lib = nixpkgs.lib;
+    in
+    {
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        inherit system;
+        modules = [
+          ./configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
     };
-  };
 }

@@ -59,9 +59,11 @@
     packages = [
       pkgs.zsh
     ];
-    # programs.zsh.enable = true;
     shell = pkgs.zsh;
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   home-manager.users.julius = { pkgs, ... }: {
     home.stateVersion = "24.05";
@@ -76,6 +78,8 @@
       pkgs.rustup
       pkgs.pnpm
       pkgs.nodejs
+      pkgs.spotify
+      pkgs.gnomeExtensions.open-bar
     ];
 
     home.sessionVariables = {
