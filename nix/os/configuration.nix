@@ -11,6 +11,14 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.theme = "${
+      (pkgs.fetchFromGitHub {
+        owner = "Blaysht";
+        repo = "grub_bios_theme";
+        rev = "035554c30df6a10158a5a71acfbc4975045fc7ac";
+        sha256 = "0hddg3xx3aykxsyl94bifrwbi0w18pmw1h07387rr2kx4lq091wi";
+      })
+    }/OldBIOS";
 
   networking.hostName = "nixos";
 
