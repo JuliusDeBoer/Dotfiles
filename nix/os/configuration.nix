@@ -77,19 +77,22 @@
     home.stateVersion = "24.05";
 
     home.packages = [
-      pkgs.tlrc
-      pkgs.openssh
-      pkgs.neovim
-      pkgs.firefox
-      pkgs.zed-editor
-      pkgs.vesktop
-      pkgs.rustup
       pkgs.clang
-      pkgs.pnpm
       pkgs.nodejs
-      pkgs.spotify
-      pkgs.gnomeExtensions.open-bar
+
+      pkgs.pnpm
+      pkgs.openssh
       pkgs.httpie
+      pkgs.tlrc
+
+      pkgs.neovim
+      pkgs.zed-editor
+
+      pkgs.firefox
+      pkgs.spotify
+      pkgs.vesktop
+
+      pkgs.gnomeExtensions.open-bar
     ];
 
     home.sessionVariables = {
@@ -175,6 +178,7 @@
     gnupg
     pinentry-curses
     geist-font
+    (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
   ];
 
   programs.gnupg.agent = {
