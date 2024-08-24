@@ -88,6 +88,7 @@
       pkgs.nodejs
       pkgs.spotify
       pkgs.gnomeExtensions.open-bar
+      pkgs.httpie
     ];
 
     home.sessionVariables = {
