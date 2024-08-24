@@ -84,6 +84,7 @@
       pkgs.zed-editor
       pkgs.vesktop
       pkgs.rustup
+      pkgs.clang
       pkgs.pnpm
       pkgs.nodejs
       pkgs.spotify
