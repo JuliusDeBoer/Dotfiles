@@ -111,6 +111,11 @@
       "org/gnome/shell" = {
         favorite-app = [];
       };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open_terminal" = {
+        name = "Open terminal";
+        binding = "<Super>Return";
+        command = "wezterm";
+      };
     };
 
     programs.zsh = {
