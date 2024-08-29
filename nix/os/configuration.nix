@@ -111,7 +111,6 @@ in
       pkgs.httpie
       pkgs.tlrc
 
-      pkgs.neovim
       pkgs.zed-editor
 
       pkgs.firefox
@@ -124,10 +123,6 @@ in
     ];
 
     home.file.".steam/root/compatibilitytools.d/${protonGE.name}".source = "${protonGE}";
-
-    home.sessionVariables = {
-      EDITOR = "nvim";
-    };
 
     dconf.settings = {
       "org/gnome/desktop/interface" = {
@@ -183,6 +178,11 @@ in
       };
     };
 
+    programs.neovim = {
+        enable = true;
+        defaultEditor = true;
+    };
+
     programs.wezterm = {
       enable = true;
       enableBashIntegration = false;
@@ -197,6 +197,12 @@ in
 
         return config
       '';
+    };
+
+    home.shellAliases = {
+        md = "mkdir";
+        c = "clear";
+        q = "exit";
     };
   };
 
