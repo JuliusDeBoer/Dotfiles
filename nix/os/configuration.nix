@@ -110,6 +110,7 @@ in
       pkgs.openssh
       pkgs.httpie
       pkgs.tlrc
+      pkgs.file
 
       pkgs.zed-editor
 
@@ -118,6 +119,8 @@ in
       pkgs.vesktop
 
       pkgs.gnomeExtensions.open-bar
+
+      pkgs.libreoffice
 
       protonGE
     ];
