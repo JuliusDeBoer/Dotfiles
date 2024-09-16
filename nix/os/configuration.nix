@@ -40,6 +40,7 @@ in
     }/OldBIOS";
 
   networking.hostName = "nixos";
+  services.resolved.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -118,9 +119,13 @@ in
       pkgs.spotify
       pkgs.vesktop
 
+      pkgs.ollama
+
       pkgs.gnomeExtensions.open-bar
 
       pkgs.libreoffice
+
+      pkgs.iosevka
 
       protonGE
     ];
@@ -150,6 +155,18 @@ in
       enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
+      plugins = [
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.8.0";
+            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+          };
+        }
+      ];
     };
 
     programs.starship = {
@@ -178,6 +195,9 @@ in
         rerere.enabled = true;
         branch.sort = "-committerdate";
         pull.ff = "only";
+        alias = {
+           	fucked = "!f() { git reset --hard origin/$1; }; f";
+        };
       };
     };
 
@@ -196,6 +216,8 @@ in
 
         config.color_scheme = 'Tokyo Night'
 
+        -- config.font = wezterm.font('Iosevka Term')
+        front_end = "WebGpu"
         config.enable_tab_bar = false
 
         return config
