@@ -112,14 +112,15 @@ in
       pkgs.httpie
       pkgs.tlrc
       pkgs.file
+      pkgs.onefetch
+      pkgs.fd
+      pkgs.ripgrep
 
       pkgs.zed-editor
 
       pkgs.firefox
       pkgs.spotify
       pkgs.vesktop
-
-      pkgs.ollama
 
       pkgs.gnomeExtensions.open-bar
 
