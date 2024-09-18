@@ -197,7 +197,7 @@ in
         branch.sort = "-committerdate";
         pull.ff = "only";
         alias = {
-           	fucked = "!f() { git reset --hard origin/$1; }; f";
+           	fucked = "reset --hard HEAD";
         };
       };
     };
