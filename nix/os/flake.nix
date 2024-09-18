@@ -13,6 +13,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+        url = "github:MarceColl/zen-browser-flake/06505a088396e2c0b9ad100302502783a6bcdb40";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs :
@@ -33,7 +37,10 @@
           inputs.home-manager.nixosModules.default
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+            environment.systemPackages = [
+              pkgs.rust-bin.stable.latest.default
+              inputs.zen-browser.packages."${system}".specific
+            ];
           })
         ];
       };
