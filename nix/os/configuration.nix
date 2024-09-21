@@ -31,13 +31,11 @@ in
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.theme = "${
-      (pkgs.fetchFromGitHub {
-        owner = "Blaysht";
-        repo = "grub_bios_theme";
-        rev = "035554c30df6a10158a5a71acfbc4975045fc7ac";
-        sha256 = "0hddg3xx3aykxsyl94bifrwbi0w18pmw1h07387rr2kx4lq091wi";
+      (fetchTarball {
+        url = "https://github.com/krypciak/crossgrub/releases/download/1.0.0/crossgrub.tar.gz";
+        sha256 = "0v2dhcqip7sh41lk5rfbacmc13qmpqcfzrjpbwidymmzbs6dwlgp";
       })
-    }/OldBIOS";
+    }";
 
   networking.hostName = "nixos";
   services.resolved.enable = true;
@@ -118,7 +116,6 @@ in
 
       pkgs.zed-editor
 
-      pkgs.firefox
       pkgs.spotify
       pkgs.vesktop
 
@@ -197,7 +194,7 @@ in
         branch.sort = "-committerdate";
         pull.ff = "only";
         alias = {
-           	fucked = "reset --hard HEAD";
+          fucked = "reset --hard HEAD";
         };
       };
     };
