@@ -83,7 +83,12 @@ in
     pulse.enable = true;
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    interactiveShellInit = ''
+      eval "$(zoxide init zsh)"
+    '';
+  };
 
   users.users.julius = {
     isNormalUser = true;
@@ -113,6 +118,7 @@ in
       pkgs.onefetch
       pkgs.fd
       pkgs.ripgrep
+      pkgs.zoxide
 
       pkgs.zed-editor
 
@@ -226,6 +232,7 @@ in
         md = "mkdir";
         c = "clear";
         q = "exit";
+        # z = "zoxide";
     };
   };
 
