@@ -125,6 +125,9 @@ in
       pkgs.spotify
       pkgs.vesktop
 
+      pkgs.gimp
+      pkgs.inkscape
+
       pkgs.gnomeExtensions.open-bar
 
       pkgs.libreoffice
