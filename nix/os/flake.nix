@@ -15,36 +15,44 @@
     };
 
     zen-browser = {
-        url = "github:MarceColl/zen-browser-flake/06505a088396e2c0b9ad100302502783a6bcdb40";
+      url = "github:MarceColl/zen-browser-flake/06505a088396e2c0b9ad100302502783a6bcdb40";
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs :
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
       lib = nixpkgs.lib;
     in
     {
       nixosConfigurations.T480 = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+        };
         inherit system;
         modules = [
           ./configuration.nix
-          ./hardware/T480.nix
-          ./specialized/T480.nix
+          ./hosts/T480.nix
           inputs.home-manager.nixosModules.default
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
-            environment.systemPackages = [
-              pkgs.rust-bin.stable.latest.default
-              inputs.zen-browser.packages."${system}".specific
-            ];
-          })
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
+              environment.systemPackages = [
+                pkgs.rust-bin.stable.latest.default
+                inputs.zen-browser.packages."${system}".specific
+              ];
+            }
+          )
         ];
       };
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
     };
 }

@@ -1,5 +1,3 @@
-# TODO: Move a lot of this into spererate files
-
 { config, pkgs, ... }:
 
 let
@@ -20,17 +18,22 @@ let
   };
 in
 {
+  imports = [
+    ./modules/de/gnome.nix
+    ./modules/shell.nix
+  ];
+
   # Grub
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.theme = "${
-      (fetchTarball {
-        url = "https://github.com/krypciak/crossgrub/releases/download/1.0.0/crossgrub.tar.gz";
-        sha256 = "0v2dhcqip7sh41lk5rfbacmc13qmpqcfzrjpbwidymmzbs6dwlgp";
-      })
-    }";
+    (fetchTarball {
+      url = "https://github.com/krypciak/crossgrub/releases/download/1.0.0/crossgrub.tar.gz";
+      sha256 = "0v2dhcqip7sh41lk5rfbacmc13qmpqcfzrjpbwidymmzbs6dwlgp";
+    })
+  }";
 
   services.resolved.enable = true;
 
@@ -41,7 +44,10 @@ in
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.networkmanager.enable = true;
 
@@ -77,161 +83,134 @@ in
     pulse.enable = true;
   };
 
-  programs.zsh = {
-    enable = true;
-    interactiveShellInit = ''
-      eval "$(zoxide init zsh)"
-    '';
-  };
-
   users.users.julius = {
     isNormalUser = true;
     description = "Julius";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = [
-      pkgs.zsh
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
-    shell = pkgs.zsh;
   };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.julius = { pkgs, ... }: {
-    home.stateVersion = "24.05";
+  home-manager.users.julius =
+    { pkgs, ... }:
+    {
+      home.stateVersion = "24.05";
 
-    home.packages = [
-      pkgs.clang
-      pkgs.nodejs
+      home.packages = [
+        pkgs.clang
+        pkgs.nodejs
 
-      pkgs.pnpm
-      pkgs.openssh
-      pkgs.httpie
-      pkgs.tlrc
-      pkgs.file
-      pkgs.onefetch
-      pkgs.fd
-      pkgs.ripgrep
-      pkgs.zoxide
+        pkgs.pnpm
+        pkgs.openssh
+        pkgs.httpie
+        pkgs.tlrc
+        pkgs.file
+        pkgs.onefetch
+        pkgs.fd
+        pkgs.ripgrep
+        pkgs.zoxide
 
-      pkgs.zed-editor
+        pkgs.zed-editor
 
-      pkgs.spotify
-      pkgs.vesktop
+        pkgs.spotify
+        pkgs.vesktop
 
-      pkgs.gimp
-      pkgs.inkscape
+        pkgs.gimp
+        pkgs.inkscape
 
-      pkgs.gnomeExtensions.open-bar
+        pkgs.libreoffice
 
-      pkgs.libreoffice
+        pkgs.iosevka
 
-      pkgs.iosevka
-
-      protonGE
-    ];
-
-    home.file.".steam/root/compatibilitytools.d/${protonGE.name}".source = "${protonGE}";
-
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-        cursor-size = 24;
-        enable-hot-corners = false;
-        font-name = "Geist 10";
-        show-battery-percentage = true;
-        toolbar-style = "text";
-      };
-      "org/gnome/shell" = {
-        favorite-app = [];
-      };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open_terminal" = {
-        name = "Open terminal";
-        binding = "<Super>Return";
-        command = "wezterm";
-      };
-    };
-
-    programs.zsh = {
-      enable = true;
-      autosuggestion.enable = true;
-      enableCompletion = true;
-      plugins = [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.8.0";
-            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
-          };
-        }
+        protonGE
       ];
-    };
 
-    programs.starship = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+      home.file.".steam/root/compatibilitytools.d/${protonGE.name}".source = "${protonGE}";
 
-    programs.git = {
-      enable = true;
-      userName = "Julius de Boer";
-      userEmail = "45075461+JuliusDeBoer@users.noreply.github.com";
-      signing = {
-        key = "04491B6E0B95C939";
-        signByDefault = true;
+      programs.zsh = {
+        enable = true;
+        autosuggestion.enable = true;
+        enableCompletion = true;
+        plugins = [
+          {
+            name = "zsh-nix-shell";
+            file = "nix-shell.plugin.zsh";
+            src = pkgs.fetchFromGitHub {
+              owner = "chisui";
+              repo = "zsh-nix-shell";
+              rev = "v0.8.0";
+              sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+            };
+          }
+        ];
       };
-      extraConfig = {
-        init.defaultBranch = "master";
-        color = {
-          diff = "auto";
-          status = "auto";
-          branch = "auto";
-          interactive = "auto";
-          ui = true;
-          pager = true;
+
+      programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+
+      programs.git = {
+        enable = true;
+        userName = "Julius de Boer";
+        userEmail = "45075461+JuliusDeBoer@users.noreply.github.com";
+        signing = {
+          key = "04491B6E0B95C939";
+          signByDefault = true;
         };
-        rerere.enabled = true;
-        branch.sort = "-committerdate";
-        pull.ff = "only";
-        alias = {
-          fucked = "reset --hard HEAD";
+        extraConfig = {
+          init.defaultBranch = "master";
+          color = {
+            diff = "auto";
+            status = "auto";
+            branch = "auto";
+            interactive = "auto";
+            ui = true;
+            pager = true;
+          };
+          rerere.enabled = true;
+          branch.sort = "-committerdate";
+          pull.ff = "only";
+          alias = {
+            fucked = "reset --hard HEAD";
+          };
         };
       };
-    };
 
-    programs.neovim = {
+      programs.neovim = {
         enable = true;
         defaultEditor = true;
-    };
+      };
 
-    programs.wezterm = {
-      enable = true;
-      enableBashIntegration = false;
-      enableZshIntegration = true;
-      extraConfig = ''
-        local wezterm = require 'wezterm'
-        local config = wezterm.config_builder()
+      programs.wezterm = {
+        enable = true;
+        enableBashIntegration = false;
+        enableZshIntegration = true;
+        extraConfig = ''
+          local wezterm = require 'wezterm'
+          local config = wezterm.config_builder()
 
-        config.color_scheme = 'Tokyo Night'
+          config.color_scheme = 'Tokyo Night'
 
-        -- config.font = wezterm.font('Iosevka Term')
-        front_end = "WebGpu"
-        config.enable_tab_bar = false
+          -- config.font = wezterm.font('Iosevka Term')
+          front_end = "WebGpu"
+          config.enable_tab_bar = false
 
-        return config
-      '';
-    };
+          return config
+        '';
+      };
 
-    home.shellAliases = {
+      home.shellAliases = {
         md = "mkdir";
         c = "clear";
         q = "exit";
         # z = "zoxide";
+      };
     };
-  };
 
   nixpkgs.config.allowUnfree = true;
 
