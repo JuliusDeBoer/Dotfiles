@@ -34,6 +34,8 @@
         inherit system;
         modules = [
           ./configuration.nix
+          ./hardware/T480.nix
+          ./specialized/T480.nix
           inputs.home-manager.nixosModules.default
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];

@@ -20,11 +20,6 @@ let
   };
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   # Grub
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
@@ -37,7 +32,6 @@ in
       })
     }";
 
-  networking.hostName = "nixos";
   services.resolved.enable = true;
 
   hardware.graphics = {
