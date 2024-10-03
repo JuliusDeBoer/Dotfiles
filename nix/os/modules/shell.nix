@@ -22,6 +22,7 @@
         pkgs.fd
         pkgs.ripgrep
         pkgs.zoxide
+        pkgs.p7zip
       ];
 
       home.shellAliases = {
