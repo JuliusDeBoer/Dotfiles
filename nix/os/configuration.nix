@@ -177,7 +177,7 @@
           config.color_scheme = 'Tokyo Night'
 
           -- config.font = wezterm.font('Iosevka Term')
-          front_end = "WebGpu"
+          config.front_end = "WebGpu"
           config.enable_tab_bar = false
 
           return config

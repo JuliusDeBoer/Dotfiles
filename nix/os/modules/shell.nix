@@ -23,13 +23,13 @@
         pkgs.ripgrep
         pkgs.zoxide
         pkgs.p7zip
+        pkgs.cyme
       ];
 
       home.shellAliases = {
         md = "mkdir";
         c = "clear";
         q = "exit";
-        # z = "zoxide";
       };
 
       programs.zsh = {
