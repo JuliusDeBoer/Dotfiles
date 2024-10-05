@@ -184,6 +184,11 @@
         '';
       };
 
+      programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+
       home.shellAliases = {
         md = "mkdir";
         c = "clear";
