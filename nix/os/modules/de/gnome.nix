@@ -8,24 +8,27 @@
     desktopManager.gnome.enable = true;
   };
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    epiphany # web browser
-    gedit # text editor
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    gnome-maps
-  ]);
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
+      gnome-photos
+      gnome-tour
+      cheese # webcam tool
+      gnome-music
+      gnome-terminal
+      epiphany # web browser
+      gedit # text editor
+      geary # email reader
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-maps
+    ]
+  );
 
   # Get gnome tray icons working
   environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator ];
