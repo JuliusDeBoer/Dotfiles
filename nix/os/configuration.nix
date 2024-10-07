@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/de/gnome.nix
+    ./modules/git.nix
     ./modules/shell.nix
     ./modules/steam.nix
     ./modules/grub.nix
@@ -88,33 +89,6 @@
         pkgs.iosevka
       ];
 
-      programs.git = {
-        enable = true;
-        userName = "Julius de Boer";
-        userEmail = "45075461+JuliusDeBoer@users.noreply.github.com";
-        signing = {
-          key = "04491B6E0B95C939";
-          signByDefault = true;
-        };
-        extraConfig = {
-          init.defaultBranch = "master";
-          color = {
-            diff = "auto";
-            status = "auto";
-            branch = "auto";
-            interactive = "auto";
-            ui = true;
-            pager = true;
-          };
-          rerere.enabled = true;
-          branch.sort = "-committerdate";
-          pull.ff = "only";
-          alias = {
-            fucked = "reset --hard HEAD";
-          };
-        };
-      };
-
       programs.neovim = {
         enable = true;
         defaultEditor = true;
@@ -148,17 +122,9 @@
     git
     openssh
     bat
-    gnupg
-    pinentry-curses
     geist-font
     (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
   ];
-
-  programs.gnupg.agent = {
-    enable = true;
-    # TODO: Dont use curses
-    pinentryPackage = pkgs.pinentry-curses;
-  };
 
   system.stateVersion = "23.05";
 }
