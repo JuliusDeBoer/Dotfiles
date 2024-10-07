@@ -40,12 +40,6 @@
 
   services.pcscd.enable = true;
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
-
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -79,12 +73,7 @@
         pkgs.pnpm
         pkgs.openssh
         pkgs.httpie
-        pkgs.tlrc
-        pkgs.file
         pkgs.onefetch
-        pkgs.fd
-        pkgs.ripgrep
-        pkgs.zoxide
 
         pkgs.zed-editor
 
@@ -98,29 +87,6 @@
 
         pkgs.iosevka
       ];
-
-      programs.zsh = {
-        enable = true;
-        autosuggestion.enable = true;
-        enableCompletion = true;
-        plugins = [
-          {
-            name = "zsh-nix-shell";
-            file = "nix-shell.plugin.zsh";
-            src = pkgs.fetchFromGitHub {
-              owner = "chisui";
-              repo = "zsh-nix-shell";
-              rev = "v0.8.0";
-              sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
-            };
-          }
-        ];
-      };
-
-      programs.starship = {
-        enable = true;
-        enableZshIntegration = true;
-      };
 
       programs.git = {
         enable = true;
@@ -171,18 +137,6 @@
           return config
         '';
       };
-
-      programs.direnv = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-
-      home.shellAliases = {
-        md = "mkdir";
-        c = "clear";
-        q = "exit";
-        # z = "zoxide";
-      };
     };
 
   nixpkgs.config.allowUnfree = true;
@@ -193,7 +147,6 @@
     neovim
     git
     openssh
-    tlrc
     bat
     gnupg
     pinentry-curses
