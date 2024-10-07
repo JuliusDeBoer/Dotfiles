@@ -15,7 +15,7 @@
     };
 
     zen-browser = {
-      url = "github:MarceColl/zen-browser-flake/06505a088396e2c0b9ad100302502783a6bcdb40";
+      url = "github:MarceColl/zen-browser-flake/e6ab73f405e9a2896cce5956c549a9cc359e5fcc";
     };
   };
 
