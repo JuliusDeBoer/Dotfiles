@@ -11,6 +11,14 @@
 
   networking.hostName = "T480";
 
+  hardware.graphics = {
+    enable = true;
+
+    extraPackages = [ pkgs.amdvlk ];
+    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+  };
+
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "nvme"
