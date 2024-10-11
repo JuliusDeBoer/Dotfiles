@@ -18,7 +18,6 @@
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
-
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "nvme"
