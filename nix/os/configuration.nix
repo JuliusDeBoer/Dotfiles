@@ -44,26 +44,49 @@
     {
       home.stateVersion = "24.05";
 
-      home.packages = [
-        pkgs.clang
-        pkgs.nodejs
+      home.packages = with pkgs; [
+        clang
+        nodejs
 
-        pkgs.pnpm
-        pkgs.openssh
-        pkgs.httpie
-        pkgs.onefetch
+        pnpm
+        openssh
+        httpie
+        onefetch
 
-        pkgs.zed-editor
+        zed-editor
 
-        pkgs.spotify
-        pkgs.vesktop
+        spotify
+        vesktop
 
-        pkgs.gimp
-        pkgs.inkscape
+        gimp
+        inkscape
 
-        pkgs.libreoffice
+        (iosevka.override {
+          set = "term";
+          privateBuildPlan = {
+            family = "Iosevka Term";
+            spacing = "term";
+            serifs = "sans";
+            noCvSs = true;
+            exportGlyphNames = false;
+            ligations = {
+              inherits = "dlig";
+            };
+            weights.Regular = {
+              shape = 400;
+              menu = 400;
+              css = 400;
+            };
+            widths.Normal = {
+              shape = 500;
+              menu = 5;
+              css = "normal";
+            };
+            webfontFormats = "TTF";
+          };
+        })
 
-        pkgs.iosevka
+        libreoffice
       ];
 
       programs.neovim = {
@@ -81,9 +104,10 @@
 
           config.color_scheme = 'Tokyo Night'
 
-          -- config.font = wezterm.font('Iosevka Term')
+          config.font = wezterm.font('Iosevka Term')
           config.front_end = "WebGpu"
           config.enable_tab_bar = false
+          enable_wayland = true
 
           return config
         '';
@@ -99,7 +123,10 @@
     git
     openssh
     bat
+
+    # Fonts
     geist-font
+
     (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
   ];
 

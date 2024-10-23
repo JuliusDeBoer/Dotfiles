@@ -32,7 +32,7 @@
 
   # Get gnome tray icons working
   environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator ];
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   home-manager.users.julius =
     { pkgs, ... }:
