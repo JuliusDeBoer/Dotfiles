@@ -54,5 +54,11 @@
         ];
       };
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      devShell.x86_64-linux = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          nixd
+          nil
+        ];
+      };
     };
 }
