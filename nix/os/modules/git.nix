@@ -30,6 +30,7 @@
           rerere.enabled = true;
           branch.sort = "-committerdate";
           pull.ff = "only";
+          push.autoSetupRemote = true;
           alias = {
             fucked = "reset --hard HEAD";
           };

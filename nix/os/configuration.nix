@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -6,10 +11,22 @@
     ./modules/git.nix
     ./modules/grub.nix
     ./modules/i18n.nix
+    ./modules/limbo.nix
     ./modules/shell.nix
     ./modules/steam.nix
   ];
   services.resolved.enable = true;
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-unwrapped"
+      "spotify"
+      "aseprite"
+      "discord"
+      "rider"
+    ];
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -31,6 +48,7 @@
     isNormalUser = true;
     description = "Julius";
     extraGroups = [
+      "docker"
       "networkmanager"
       "wheel"
     ];
@@ -54,6 +72,8 @@
         onefetch
 
         zed-editor
+
+        chromium
 
         spotify
         vesktop
@@ -89,8 +109,13 @@
         libreoffice
       ];
 
-      programs.neovim = {
+      programs.vim = {
         enable = true;
+        settings = {
+          number = true;
+          relativenumber = true;
+        };
+        # Return to monke
         defaultEditor = true;
       };
 
@@ -114,12 +139,8 @@
       };
     };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     wget
-    vim
-    neovim
     git
     openssh
     bat

@@ -16,14 +16,15 @@
   home-manager.users.julius =
     { pkgs, ... }:
     {
-      home.packages = [
-        pkgs.tlrc
-        pkgs.file
-        pkgs.fd
-        pkgs.ripgrep
-        pkgs.zoxide
-        pkgs.p7zip
-        pkgs.cyme
+      home.packages = with pkgs; [
+        cyme
+        fd
+        file
+        p7zip
+        ripgrep
+        tlrc
+        tmux
+        zoxide
       ];
 
       home.shellAliases = {
@@ -58,6 +59,40 @@
       programs.starship = {
         enable = true;
         enableZshIntegration = true;
+        settings = {
+          format =
+            "$username@$hostname"
+            + "( [\\($git_branch( $git_state)( $git_metrics)\\)](purple))"
+            + "( [\\($nix_shell\\)](blue))"
+            + "\n$directory$character";
+          username = {
+            format = "[$user]($style)";
+            show_always = true;
+          };
+          hostname = {
+            format = "[$ssh_symbol$hostname]($style)";
+            ssh_only = false;
+          };
+          git_branch = {
+            format = "[$symbol$branch(:$remote_branch)]($style)";
+          };
+          git_metrics = {
+            disabled = false;
+            format = "( [\\[+$added\\]]($added_style))( [\\[-$deleted\\]]($deleted_style))";
+          };
+          directory = {
+            truncate_to_repo = false;
+          };
+          nix_shell = {
+            format = "[$symbol( $name)]($style)";
+            symbol = "󱄅 ";
+          };
+          character = {
+            format = "$symbol ";
+            success_symbol = "[::](green)";
+            error_symbol = "[::](red)";
+          };
+        };
       };
     };
 }
